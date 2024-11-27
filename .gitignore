@@ -1,0 +1,181 @@
+# Files and directories suggested to be ignored by Drupal
+# @see https://git.drupalcode.org/project/drupal/-/blob/9.3.x/example.gitignore
+#
+# We allow settings.php to be committed since Acquia's filesystem is read-only
+# @see https://www.drupal.org/project/drupal/issues/3257119
+/drupal/web/core
+/drupal/vendor/
+/drupal/web/sites/*/settings.*.php
+/drupal/web/sites/*/services*.yml
+/drupal/web/sites/*/files
+/drupal/web/sites/*/private
+/drupal/web/sites/simpletest
+/drupal/keys/
+# Directories specific to this template
+/drupal/web/libraries
+/drupal/web/modules/contrib
+/drupal/web/profiles/contrib
+/drupal/web/themes/contrib
+
+# Files and directories for common development environments, loosely inherited from BLT Project
+# @see https://github.com/acquia/blt-project/blob/11.x/.gitignore
+
+# OS X
+/drupal/.DS_Store
+/drupal/.AppleDouble
+/drupal/.LSOverride
+/drupal/._*
+/drupal/.Spotlight-V100
+/drupal/.Trashes
+
+# Windows
+/drupal/Thumbs.db
+/drupal/ehthumbs.db
+/drupal/Desktop.ini
+/drupal/$RECYCLE.BIN/
+
+# VsCode
+/drupal/.vscode
+
+# Eclipse
+/drupal/*.pydevproject
+/drupal/.project
+/drupal/.metadata
+/drupal/tmp/**
+/drupal/tmp/**/*
+/drupal/*.tmp
+/drupal/*.bak
+/drupal/*.swp
+/drupal/*~.nib
+/drupal/local.properties
+/drupal/.classpath
+/drupal/.settings/
+/drupal/.loadpath
+/drupal/*.launch
+/drupal/.externalToolBuilders/
+
+# CDT / PDT
+/drupal/.cproject
+/drupal/.buildpathk
+
+# Emacs
+/drupal/*~
+/drupal/\#*\#
+/drupal/.emacs.desktop
+/drupal/.emacs.desktop.lock
+/drupal/*.elc
+/drupal/auto-save-list
+/drupal/tramp
+/drupal/.\#*
+
+# IntelliJ / PhpStorm
+/drupal/.idea/
+/drupal/atlassian-ide-plugin.xml
+
+# XHProf
+/drupal/xhprof_*
+
+# Sass
+/drupal/.sass-cache
+/drupal/*.css.map
+
+# Netbeans IDE
+/drupal/nbproject
+/drupal/nbproject/*
+
+# DrupalVM
+/drupal/.vagrant/
+
+# DevDesktop
+/drupal/*.dd
+
+# NPM
+/drupal/npm-debug.log
+
+# Drush 9 Checksums
+/drupal/drush/sites/.checksums
+
+# Deprecation detector rules
+/drupal/.rules
+
+# PHPCS
+/drupal/.phpcs-cache
+
+# PHPUnit
+/drupal/.phpunit.result.cache
+
+# Drupal check report.
+/drupal/drupal-check-report.xml
+
+# Local files
+/drupal/local.settings.php
+/drupal/local.drush.yml
+/drupal/local.site.yml
+/drupal/local.services.yml
+/drupal/*.local
+/drupal/local.blt.yml
+
+# oauth keys
+/drupal/oauth_keys/
+
+# env-file
+/drupal/.env*
+/drupal/.editorconfig
+/drupal/.gitattributes%    
+
+#Exports
+/drupal/*.gz
+/drupal/*.sql
+/drupal/*.zip
+
+# Acquia IDE files
+/drupal/deployment_identifier
+
+# Other files
+/drupal/phpcs.xml.dist
+/drupal/phpstan.neon.dist
+/drupal/phpunit.xml.dist
+/drupal/LICENSE
+/drupal/README.md
+/drupal/SECURITY.md
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/nextjs/node_modules
+/nextjs/.pnp
+/nextjs/.pnp.*
+/nextjs/.yarn/*
+/nextjs/!.yarn/patches
+/nextjs/!.yarn/plugins
+/nextjs/!.yarn/releases
+/nextjs/!.yarn/versions
+
+# testing
+/nextjs/coverage
+
+# next.js
+/nextjs/.next/
+/nextjs/out/
+
+# production
+/nextjs/build
+
+# misc
+/nextjs/.DS_Store
+/nextjs/*.pem
+
+# debug
+/nextjs/npm-debug.log*
+/nextjs/yarn-debug.log*
+/nextjs/yarn-error.log*
+
+# env files (can opt-in for committing if needed)
+/nextjs/.env*
+
+# vercel
+/nextjs/.vercel
+
+# typescript
+/nextjs/*.tsbuildinfo
+/nextjs/next-env.d.ts
