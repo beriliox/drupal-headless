@@ -1,0 +1,69 @@
+name: drupal
+recipe: drupal10
+config:
+  webroot: ./drupal/web
+  php: '8.3'
+  via: apache
+  xdebug: true
+  drush: 13
+  database: mysql
+proxy:
+  appserver:
+    - drupal-headless.lndo.site
+  # nextjs:
+  #   - nextjs.lndo.site:3000
+  #   - prod.nextjs.lndo.site:9000
+services:
+  # appserver:
+  #   volumes:
+  #     - ~/.composer/cache:/root/.composer/cache
+  #   build_as_root:
+  #     - mkdir -p /mnt/gfs/.LANDO/nobackup/oauth_keys/sites/default/
+  database:
+    type: mysql
+    creds:
+      user: database
+      password: database
+      database: database
+  # nextjs:
+  #   type: node:20
+  #   portforward: true
+  #   port: 3000
+  #   # Opcional: habilitar SSL para el entorno Next.js
+  #   # ssl: true
+  #   overrides:
+  #     environment:
+  #       # Configuración para npm global
+  #       NPM_CONFIG_PREFIX: /home/node/.npm-global
+  #     volumes:
+  #       # Mapea el directorio del proyecto Next.js
+  #       - ./nextjs:/app/nextjs
+  #   command:
+  #     - cd /app/nextjs && yarn install && yarn dev
+# events:
+#   post-start:
+#     - appserver: printf "%b\\n" "\033[38;5;6m[INFO-RM] Move folder site-php\033[0m" >&2
+#     - appserver: cd /var/www && rm -Rf site-old && mkdir -p site-old && mv -f site-php site-old/
+#     - appserver: mkdir -p /tmp/private-files && chmod 777 /tmp/private-files
+#     - appserver: rm -rf /var/www/.composer/cache/*  # Limpia caché de Composer
+
+#     # Configura npm global para evitar errores ENOENT
+#     - nextjs: mkdir -p /home/node/.npm-global/lib
+#     - nextjs: npm config set prefix /home/node/.npm-global
+#     - nextjs: export PATH=/home/node/.npm-global/bin:$PATH
+tooling:
+#   npx:
+#     service: nextjs
+#     cmd: npx --cwd=/app/nextjs
+#   npm:
+#     service: nextjs
+#     cmd: npm --cwd=/app/nextjs
+#   yarn:
+#     service: nextjs
+#     cmd: yarn --cwd=/app/nextjs
+  composer:
+    service: appserver
+    cmd: composer --working-dir=/app/drupal
+  drush:
+    service: appserver
+    cmd: "/app/drupal/vendor/bin/drush" # Ruta a Drush si está en el proyecto
