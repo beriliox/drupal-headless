@@ -10,57 +10,38 @@ config:
 proxy:
   appserver:
     - drupal-headless.lndo.site
-  # nextjs:
-  #   - nextjs.lndo.site:3000
-  #   - prod.nextjs.lndo.site:9000
+  gatsbyjs:
+    - gatsbyjs.lndo.site:8000
+    - prod.gatsbyjs.lndo.site:9000
 services:
-  # appserver:
-  #   volumes:
-  #     - ~/.composer/cache:/root/.composer/cache
-  #   build_as_root:
-  #     - mkdir -p /mnt/gfs/.LANDO/nobackup/oauth_keys/sites/default/
   database:
     type: mysql
     creds:
       user: database
       password: database
       database: database
-  # nextjs:
-  #   type: node:20
-  #   portforward: true
-  #   port: 3000
-  #   # Opcional: habilitar SSL para el entorno Next.js
-  #   # ssl: true
-  #   overrides:
-  #     environment:
-  #       # Configuración para npm global
-  #       NPM_CONFIG_PREFIX: /home/node/.npm-global
-  #     volumes:
-  #       # Mapea el directorio del proyecto Next.js
-  #       - ./nextjs:/app/nextjs
-  #   command:
-  #     - cd /app/nextjs && yarn install && yarn dev
-# events:
-#   post-start:
-#     - appserver: printf "%b\\n" "\033[38;5;6m[INFO-RM] Move folder site-php\033[0m" >&2
-#     - appserver: cd /var/www && rm -Rf site-old && mkdir -p site-old && mv -f site-php site-old/
-#     - appserver: mkdir -p /tmp/private-files && chmod 777 /tmp/private-files
-#     - appserver: rm -rf /var/www/.composer/cache/*  # Limpia caché de Composer
-
-#     # Configura npm global para evitar errores ENOENT
-#     - nextjs: mkdir -p /home/node/.npm-global/lib
-#     - nextjs: npm config set prefix /home/node/.npm-global
-#     - nextjs: export PATH=/home/node/.npm-global/bin:$PATH
+  gatsbyjs:
+    type: node:20
+    port: 8000
+    build:
+      - npm i -g gatsby-cli
+    overrides:
+      environment:
+        NPM_CONFIG_PREFIX: /home/node/.npm-global
+      volumes:
+        - ./gatsbyjs:/app/gatsbyjs
+    command:
+      - cd /app/gatsbyjs && npm install && npm run develop
 tooling:
-#   npx:
-#     service: nextjs
-#     cmd: npx --cwd=/app/nextjs
-#   npm:
-#     service: nextjs
-#     cmd: npm --cwd=/app/nextjs
-#   yarn:
-#     service: nextjs
-#     cmd: yarn --cwd=/app/nextjs
+  npx:
+    service: gatsbyjs
+    cmd: npx --cwd=/app/gatsbyjs
+  npm:
+    service: gatsbyjs
+    cmd: npm --cwd=/app/gatsbyjs
+  yarn:
+    service: gatsbyjs
+    cmd: yarn --cwd=/app/gatsbyjs
   composer:
     service: appserver
     cmd: composer --working-dir=/app/drupal
