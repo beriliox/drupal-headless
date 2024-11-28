@@ -1,4 +1,4 @@
-name: drupal
+name: drupal-headless
 recipe: drupal10
 config:
   webroot: ./drupal/web
