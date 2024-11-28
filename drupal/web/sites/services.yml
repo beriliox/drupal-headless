@@ -1,0 +1,9 @@
+parameters:
+  cors.config:
+    enabled: true
+    allowedHeaders: 'Content-Type, Authorization, X-Requested-With, Accept'
+    allowedMethods: 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+    allowedOrigins: '*'
+    exposedHeaders: 'X-Custom-Header'
+    maxAge: 86400
+    supportsCredentials: true
