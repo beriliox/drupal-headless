@@ -25,4 +25,7 @@ jobs:
 
       - name: Build project
         working-directory: ./gatsbyjs
+        env:
+          GATSBY_DRUPAL_BASE_URL: ${{ secrets.GATSBY_DRUPAL_BASE_URL }}
+          GATSBY_API_BASE: ${{ secrets.GATSBY_API_BASE }}
         run: npm run build
