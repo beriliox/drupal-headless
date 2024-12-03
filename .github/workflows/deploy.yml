@@ -29,6 +29,9 @@ jobs:
           GATSBY_API_BASE: ${{ secrets.GATSBY_API_BASE }}
         run: npm run build
 
+      - name: Disable Jekyll
+        run: echo "" > ./gatsbyjs/public/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
