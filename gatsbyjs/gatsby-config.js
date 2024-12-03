@@ -2,6 +2,9 @@ require('dotenv').config({
   path: `.env.local`, // Carga .env.development o .env.production según NODE_ENV
 });
 
+
+console.log(process.env);
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
