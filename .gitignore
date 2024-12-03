@@ -138,44 +138,46 @@
 /drupal/LICENSE
 /drupal/README.md
 /drupal/SECURITY.md
-
+/*.sql
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/nextjs/node_modules
-/nextjs/.pnp
-/nextjs/.pnp.*
-/nextjs/.yarn/*
-/nextjs/!.yarn/patches
-/nextjs/!.yarn/plugins
-/nextjs/!.yarn/releases
-/nextjs/!.yarn/versions
+/gatsbyjs/.cache
+/gatsbyjs/public
+/gatsbyjs/node_modules
+/gatsbyjs/.pnp
+/gatsbyjs/.pnp.*
+/gatsbyjs/.yarn/*
+/gatsbyjs/!.yarn/patches
+/gatsbyjs/!.yarn/plugins
+/gatsbyjs/!.yarn/releases
+/gatsbyjs/!.yarn/versions
 
 # testing
-/nextjs/coverage
+/gatsbyjs/coverage
 
 # next.js
-/nextjs/.next/
-/nextjs/out/
+/gatsbyjs/.next/
+/gatsbyjs/out/
 
 # production
-/nextjs/build
+/gatsbyjs/build
 
 # misc
-/nextjs/.DS_Store
-/nextjs/*.pem
+/gatsbyjs/.DS_Store
+/gatsbyjs/*.pem
 
 # debug
-/nextjs/npm-debug.log*
-/nextjs/yarn-debug.log*
-/nextjs/yarn-error.log*
+/gatsbyjs/npm-debug.log*
+/gatsbyjs/yarn-debug.log*
+/gatsbyjs/yarn-error.log*
 
 # env files (can opt-in for committing if needed)
-/nextjs/.env*
+/gatsbyjs/.env*
 
 # vercel
-/nextjs/.vercel
+/gatsbyjs/.vercel
 
 # typescript
-/nextjs/*.tsbuildinfo
-/nextjs/next-env.d.ts
+/gatsbyjs/*.tsbuildinfo
+/gatsbyjs/next-env.d.ts
