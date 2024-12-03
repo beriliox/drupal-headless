@@ -1,0 +1,14 @@
+uuid: 48d5a314-6f77-4a32-acf8-064fc91c4072
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.gatsby
+  module:
+    - user
+id: user_add_role_action.gatsby
+label: 'Add the gatsby role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: gatsby

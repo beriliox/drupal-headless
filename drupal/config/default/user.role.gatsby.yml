@@ -1,0 +1,21 @@
+uuid: 46821ca2-fb3d-4fbc-a94a-adcd43343024
+langcode: en
+status: true
+dependencies:
+  module:
+    - graphql
+    - simple_oauth
+id: gatsby
+label: Gatsby
+weight: 4
+is_admin: null
+permissions:
+  - 'add simple_oauth entities'
+  - 'administer graphql configuration'
+  - 'administer simple_oauth entities'
+  - 'bypass graphql access'
+  - 'debug simple_oauth tokens'
+  - 'delete own simple_oauth entities'
+  - 'grant simple_oauth codes'
+  - 'update own simple_oauth entities'
+  - 'view own simple_oauth entities'
