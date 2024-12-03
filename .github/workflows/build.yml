@@ -1,0 +1,31 @@
+name: Build and Test React App
+
+on:
+  push:
+    branches:
+      - gh-actions
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: ./gatsbyjs
+        run: npm install
+
+      - name: Build project
+        working-directory: ./gatsbyjs
+        env:
+          GATSBY_DRUPAL_BASE_URL: ${{ secrets.GATSBY_DRUPAL_BASE_URL }}
+          GATSBY_API_BASE: ${{ secrets.GATSBY_API_BASE }}
+        run: npm run build
