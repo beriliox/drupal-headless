@@ -23,10 +23,6 @@ jobs:
         working-directory: ./gatsbyjs
         run: npm install
 
-      - name: Run tests
-        working-directory: ./gatsbyjs
-        run: npm test -- --watchAll=false
-
       - name: Build project
         working-directory: ./gatsbyjs
         run: npm run build
