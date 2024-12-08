@@ -1,33 +1,43 @@
-name: Deploy React App to GitHub Pages
+name: Deploy Gatsby App
 
 on:
-  push:
+  pull_request:
     branches:
-      - gh-actions
+      - master
+      - develop
+      - stage
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+        # 1. Clonar el repositorio
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
+      # 2. Configurar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 3. Instalar dependencias
       - name: Install dependencies
         working-directory: ./gatsbyjs
         run: npm install
 
+      # 4. Build del sitio con prefijo de ruta dinámico (según la rama)
       - name: Build project
         working-directory: ./gatsbyjs
         env:
           GATSBY_DRUPAL_BASE_URL: ${{ secrets.GATSBY_DRUPAL_BASE_URL }}
           GATSBY_API_BASE: ${{ secrets.GATSBY_API_BASE }}
-        run: npm run build
+          PATH_PREFIX: |
+            ${{ github.ref_name == 'master' && '/' || '' }}
+            ${{ github.ref_name == 'stage' && '/stg/' || '' }}
+            ${{ github.ref_name == 'develop' && '/dev/' || '' }}
+        run: npm run build -- --prefix-paths
 
       - name: Disable Jekyll
         run: echo "" > ./gatsbyjs/public/.nojekyll
