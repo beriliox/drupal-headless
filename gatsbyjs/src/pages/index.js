@@ -8,7 +8,7 @@ const IndexPage = ({ data }) => {
       <ul>
         {data.allNodeArticle.nodes.map((node) => (
           <li key={node.id}>
-            <Link to={`/article/${node.id}`}>{node.title}</Link>
+            <Link to={`article/${node.id}`}>{node.title}</Link>
           </li>
         ))}
       </ul>

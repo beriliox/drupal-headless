@@ -1,11 +1,15 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`, // Carga el archivo según el entorno (ejemplo: .env.development o .env.production)
+require('dotenv').config({
+  path: `.env.local`, // Carga .env.development o .env.production según NODE_ENV
 });
+
+
+console.log(process.env);
 
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  pathPrefix: "/drupal-headless", // Nombre del repositorio
   siteMetadata: {
     title: `Drupal Headless Blog`,
     siteUrl: `https://www.yourdomain.tld`
@@ -15,10 +19,8 @@ module.exports = {
     {
       resolve: "gatsby-source-drupal",
       options: {
-        options: {
-          baseUrl: process.env.GATSBY_DRUPAL_BASE_URL,
-          apiBase: process.env.GATSBY_API_BASE,
-        },
+        baseUrl: process.env.GATSBY_DRUPAL_BASE_URL,
+        apiBase: process.env.GATSBY_API_BASE,
       },
     },
   ]
