@@ -1,0 +1,20 @@
+uuid: 288ea54d-5646-42fd-b541-87e6c2cbf6e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - feeds
+id: comment.feeds_item
+field_name: feeds_item
+entity_type: comment
+type: feeds_item
+settings:
+  target_type: feeds_feed
+module: feeds
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
