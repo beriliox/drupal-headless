@@ -42,5 +42,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          folder: ./gatsbyjs/public  # Directorio donde están los archivos estáticos generados
-          publish_dir: ${{ github.ref_name }}  # Esto crea una carpeta con el nombre de la rama de origen
+          publish_dir: ./gatsbyjs/public  # Esto crea una carpeta con el nombre de la rama de origen
