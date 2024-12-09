@@ -9,7 +9,7 @@ console.log(process.env);
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: "/drupal-headless", // Nombre del repositorio
+  pathPrefix: process.env.GITHUB_REF_NAME,
   siteMetadata: {
     title: `Drupal Headless Blog`,
     siteUrl: `https://www.yourdomain.tld`
