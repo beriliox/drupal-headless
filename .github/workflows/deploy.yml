@@ -44,3 +44,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./gatsbyjs/public  # El directorio donde están los archivos estáticos generados
           destination_dir: ${{ github.ref_name }}  # Crear subdirectorios /master, /develop, /stage según la rama
+          clean: true
