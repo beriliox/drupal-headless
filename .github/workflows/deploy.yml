@@ -1,7 +1,7 @@
 name: Deploy Gatsby App
 
 on:
-  pull_request:
+  push:
     branches:
       - master
       - develop
@@ -33,10 +33,6 @@ jobs:
         env:
           GATSBY_DRUPAL_BASE_URL: ${{ secrets.GATSBY_DRUPAL_BASE_URL }}
           GATSBY_API_BASE: ${{ secrets.GATSBY_API_BASE }}
-          PATH_PREFIX: |
-            ${{ github.ref_name == 'master' && '/' || '' }}
-            ${{ github.ref_name == 'stage' && '/stg/' || '' }}
-            ${{ github.ref_name == 'develop' && '/dev/' || '' }}
         run: npm run build -- --prefix-paths
 
       - name: Disable Jekyll
@@ -46,4 +42,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./gatsbyjs/public
+          folder: ./gatsbyjs/public  # Directorio donde están los archivos estáticos generados
+          publish_dir: ${{ github.ref_name }}  # Esto crea una carpeta con el nombre de la rama de origen
