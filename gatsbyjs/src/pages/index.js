@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby";
 const IndexPage = ({ data }) => {
   return (
     <div>
-      <h1>Blog Articles</h1>
+      <h1>STAGE: Blog Articles</h1>
       <ul>
         {data.allNodeArticle.nodes.map((node) => (
           <li key={node.id}>
