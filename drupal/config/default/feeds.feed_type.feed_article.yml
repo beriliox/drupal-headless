@@ -1,0 +1,121 @@
+uuid: 98065578-771e-4357-8c30-96ff84d5c643
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.body
+    - field.field.node.article.field_image
+    - field.field.node.article.field_publication_date
+    - field.field.node.article.field_summary
+    - field.field.node.article.field_tags
+    - node.type.article
+  module:
+    - node
+label: 'Feed Article'
+id: feed_article
+description: 'Feed Article'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: csv
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: article
+  langcode: und
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  body:
+    value: body
+    label: body
+    machine_name: body
+    type: csv
+  summary:
+    value: summary
+    label: summary
+    machine_name: summary
+    type: csv
+  image:
+    value: image
+    label: image
+    machine_name: image
+    type: csv
+  tags:
+    value: tags
+    label: tags
+    machine_name: tags
+    type: csv
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  publication_date:
+    value: publication_date
+    label: publication_date
+    machine_name: publication_date
+    type: csv
+mappings:
+  -
+    target: body
+    map:
+      value: body
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_summary
+    map:
+      value: summary
+    settings:
+      language: null
+  -
+    target: field_image
+    map:
+      target_id: image
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: image
+  -
+    target: field_tags
+    map:
+      target_id: tags
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: tags
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_publication_date
+    map:
+      value: publication_date
+    settings:
+      language: null
+      timezone: UTC
